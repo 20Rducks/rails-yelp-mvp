@@ -1,0 +1,8 @@
+<h1>Add Restaurant</h1>
+<%= simple_form_for(@restaurant) do |r|%>
+<%= r.input :name %>
+<%= r.input :address %>
+<%= r.input :phone_number %>
+<%= r.input :category %>
+<%= r.submit %>
+<% end %>
