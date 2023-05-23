@@ -1,11 +1,12 @@
 class RestaurantsController < ApplicationController
-  before_action only: %i[show create destroy]
   def index
     @restaurants = Restaurant.all
   end
 
+  # Find restaurant by ID, Create @review and pass the param[id] as restaurant ID in params hash
   def show
     @restaurant = Restaurant.find(params[:id])
+    @review = Review.new(restaurant_id: params[:id])
   end
 
   def new
@@ -18,7 +19,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
-      render :edit, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

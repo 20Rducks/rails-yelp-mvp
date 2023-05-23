@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :restaurants do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: %i[create]
   end
   resources :reviews, only: [:show]
 end
